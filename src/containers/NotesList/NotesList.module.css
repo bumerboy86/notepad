@@ -1,0 +1,11 @@
+.NotesList {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    background: rgb(237, 237, 245);
+    padding: 10px;
+    box-sizing: border-box;
+    overflow: auto;
+}
