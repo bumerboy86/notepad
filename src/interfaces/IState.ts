@@ -6,4 +6,5 @@ export interface IState {
     message: string,
     note: INotes | null,
     editValue: boolean,
+    alert: boolean
 }

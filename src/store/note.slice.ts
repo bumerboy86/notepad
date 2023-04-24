@@ -53,6 +53,7 @@ const initialState: IState = {
     message: '',
     note: null,
     editValue: false,
+    alert: false,
 }
 
 const notesSlice = createSlice({
@@ -64,6 +65,10 @@ const notesSlice = createSlice({
         },
         showEdit(state, actions) {
             state.editValue = !state.editValue,
+            state.note = actions.payload
+        },
+        showAlert(state, actions) {
+            state.alert = !state.alert,
             state.note = actions.payload
         },
     },
@@ -127,12 +132,15 @@ const notesSlice = createSlice({
         })
         .addCase(deleteNote.rejected, (state) => {
             state.loading = false;
+            state.alert = false;
+            state.note = null;
         })        
         .addCase(deleteNote.fulfilled, (state, actions) => {
             state.loading = false;
             if (actions.payload !== null) {
                 state.notes = [...state.notes].filter(item => item.id !== actions.payload.id);
             }
+            state.alert = !state.alert;
         })
 
         .addCase(editNoteText.pending, (state) => {
@@ -158,7 +166,7 @@ const notesSlice = createSlice({
 })
 
 export const { 
-    clearMessage, showEdit
+    clearMessage, showEdit, showAlert
  } = notesSlice.actions;
  
 export default notesSlice.reducer;

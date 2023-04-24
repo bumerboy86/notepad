@@ -13,6 +13,8 @@ const buttonStyles = {
     edit: styles.edit,
     back: styles.back,
     save: styles.save,
+    yes: styles.yes,
+    no: styles.no,
 };
 
 export const Button = (props: TButtion) => {
